@@ -1,0 +1,4 @@
+rootProject.name = 'cloud-config'
+include 'cloud-config-server'
+include 'cloud-config-client'
+

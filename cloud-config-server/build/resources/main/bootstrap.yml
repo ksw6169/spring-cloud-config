@@ -1,0 +1,21 @@
+#application.yml에는 읽어올 Config 파일의 위치를 spring.cloud.config.server.native.searchLocations의 값으로 설정
+#search-locations: file://${user.home}/server-configs => mac, linux
+#search-locations: file:///${user.home}/server-configs => windows(C:\Users\계정명\server-configs)
+#local에 존재하는 해당 환경 설정 파일을 읽어올 수 있도록 native Profile을 활성화해야 한다.
+spring:
+    #profiles:
+        #active: dev  #file system에서 사용할 때는 Config file을 읽어올 수 있도록 native profile을 활성화시켜야 한다.
+    application:
+        name: "config-server"
+    cloud:
+        config:
+            server:
+                git:
+                    uri: "https://github.com/ksw6169/config-repo"
+                #native:
+                    #search-locations: file:///${user.home}/config-server    #config 파일의 위치(Windows)
+server:
+    port: 8888
+#server-configs 디렉토리를 로컬 PC의 해당 경로에 생성하고, {서비스이름}-{profile}.yml or .properties 형태로 환경설정 파일 작성
+#프로젝트 내 /resources 하위로 설정해도 되지만, 이렇게 하면 설정 변경 시 configuraiton 서버를 Restart해야 반영됨
+#References : https://daddyprogrammer.org/post/4347/spring-cloud-msa-configuration-server/

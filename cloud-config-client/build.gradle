@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+group 'com.corgi.config'
+version '1.0-SNAPSHOT'
+
+jar {
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web:2.0.3.RELEASE')
+    implementation('org.springframework.boot:spring-boot-starter-actuator:2.0.3.RELEASE')
+    implementation("org.springframework.cloud:spring-cloud-config-client:2.0.3.RELEASE")
+}
